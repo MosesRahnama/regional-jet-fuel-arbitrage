@@ -93,6 +93,7 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
     <div class="metric"><span>LA_GC_1 · 4-week R²</span><strong>17.9<small>%</small></strong><em>own 26-week mean: 12.6%</em></div>
     <div class="metric"><span>Miles lead over EIA</span><strong>4<small>days</small></strong><em>Saturday against Wednesday</em></div>
   </div>
+  <div class="note"><b>Liquidity:</b> bid-ask, depth and volume for LA, GC and NY jet swaps are outside the dataset. Results assume fills at 0.25 c/gal per unit traded and 50,000 bbl per spread. Break-even cost: West Coast three 0.74 c/gal (Sharpe 0.72 at 0.50, −0.69 at 1.00); shortlist 0.49 c/gal.</div>
   <div class="formula">West Coast three = LA_GC_1 (LA jet − GC jet, M1) + LA_JET_M1M2 + LA_JET_M2M3.<br>Shortlist = LA_GC_1 + LA_JET_M2M3 + SING_GC_1 + HO_BRENT (price statistics, section 4).</div>
 </section>
 
@@ -132,7 +133,7 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
   <div class="chart" id="bkChart"></div>
   <div class="legend" id="bkLegend"></div>
   <div class="formula">Position = sign(4-week forecast), set on the weekend after week t.<br>Sharpe = mean weekly profit / sd of weekly profit × √52. Dollars a year = c/gal a year × 0.42 × barrels.</div>
-  <div class="note"><b>Try this:</b> West Coast three at cost 0.50: Sharpe falls from 1.50. Switch the model to Own 26-week mean gap to compare the fair value with the spread's own history.</div>
+  <div class="note"><b>Try this:</b> West Coast three at cost 0.50: Sharpe 0.72; at 0.75: break-even. Switch the model to Own 26-week mean gap to compare the fair value with the spread's own history.</div>
 </section>
 
 <section id="explorer">
@@ -457,6 +458,7 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
   <div class="scroll"><table>
     <thead><tr><th>Limit</th><th>Effect</th></tr></thead>
     <tbody>
+      <tr><td>Liquidity: bid-ask, depth and volume for regional jet swaps outside the dataset</td><td>break-even cost 0.74 c/gal (West Coast three), 0.49 c/gal (shortlist)</td></tr>
       <tr><td>Weekly prices = mean of 5 daily settlements</td><td>fills at weekly mean price</td></tr>
       <tr><td>Test: 163 weeks + 14 COVID weeks</td><td>Sharpe from 163 weeks</td></tr>
       <tr><td>West Coast three named in PLAN.md before testing</td><td>shortlist book reported, Sharpe 0.63</td></tr>
