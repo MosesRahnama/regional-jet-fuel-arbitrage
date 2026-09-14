@@ -39,6 +39,10 @@ button.ghost{background:#fff;color:var(--accent);border:1px solid var(--accent)}
 .metric strong small{font-size:15px;font-weight:600;color:var(--muted);margin-left:4px}
 .metric em{font-style:normal;font-size:13px;line-height:1.35;color:var(--muted);align-self:start}
 .note{border-left:4px solid var(--gold);background:#fff9e9;padding:14px 18px;margin:18px 0;font-size:14px}
+.hint{display:block;font-weight:400;font-size:12.5px;line-height:1.4;color:var(--muted);margin-top:6px}
+table.terms{table-layout:fixed}
+table.terms th:first-child{width:34%}
+table.terms td.sym{font:600 13px ui-monospace,Consolas,monospace;overflow-wrap:anywhere;padding-right:22px}
 .error{color:#9d2020;font-weight:650;min-height:1.3em;margin:6px 0}
 .status{font-weight:650;color:var(--accent)}
 .scroll{overflow-x:auto}
@@ -79,7 +83,7 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
 
 <main>
 <nav>
-  <a href="#results">Results</a><a href="#book">Book builder</a><a href="#explorer">Spread explorer</a><a href="#selection">Series selection</a><a href="#drivers">Drivers</a><a href="#search">Open search</a><a href="#air">Air traffic</a><a href="#checks">Checks and limits</a>
+  <a href="#results">Results</a><a href="#terms">Symbols and terms</a><a href="#book">Book builder</a><a href="#explorer">Spread explorer</a><a href="#selection">Series selection</a><a href="#drivers">Drivers</a><a href="#search">Open search</a><a href="#air">Air traffic</a><a href="#checks">Checks and limits</a>
 </nav>
 
 <section id="results">
@@ -94,21 +98,128 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
     <div class="metric"><span>Miles lead over EIA</span><strong>4<small>days</small></strong><em>Saturday against Wednesday</em></div>
   </div>
   <div class="note"><b>Liquidity:</b> bid-ask, depth and volume for LA, GC and NY jet swaps are outside the dataset. Results assume fills at 0.25 c/gal per unit traded and 50,000 bbl per spread. Break-even cost: West Coast three 0.74 c/gal (Sharpe 0.72 at 0.50, −0.69 at 1.00); shortlist 0.49 c/gal.</div>
-  <div class="formula">West Coast three = LA_GC_1 (LA jet − GC jet, M1) + LA_JET_M1M2 + LA_JET_M2M3.<br>Shortlist = LA_GC_1 + LA_JET_M2M3 + SING_GC_1 + HO_BRENT (price statistics, section 4).</div>
+  <div class="formula">West Coast three = LA_GC_1 (LA jet − GC jet, M1) + LA_JET_M1M2 + LA_JET_M2M3.<br>Shortlist = LA_GC_1 + LA_JET_M2M3 + SING_GC_1 + HO_BRENT (price statistics, section 5).</div>
+</section>
+
+<section id="terms">
+  <h2>2. Symbols and terms</h2>
+  <p>Definitions for every code, unit, option and statistic on this page.</p>
+  <h3>Series codes</h3>
+  <div class="scroll"><table class="terms">
+    <thead><tr><th>Symbol</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="sym">LA_GC_1</td><td>Los Angeles jet price − Gulf Coast jet price, front delivery month (M1)</td></tr>
+      <tr><td class="sym">NY_GC_1</td><td>New York Harbor jet − Gulf Coast jet, M1</td></tr>
+      <tr><td class="sym">SING_GC_1</td><td>Singapore kerosene − Gulf Coast jet, M1</td></tr>
+      <tr><td class="sym">NWE_GC_1</td><td>Northwest Europe jet − Gulf Coast jet, M1</td></tr>
+      <tr><td class="sym">LA_JET_M1M2</td><td>Los Angeles jet M1 − Los Angeles jet M2 (time spread; above zero = nearer month dearer)</td></tr>
+      <tr><td class="sym">LA_JET_M2M3</td><td>Los Angeles jet M2 − M3</td></tr>
+      <tr><td class="sym">GC_JET_M1M2</td><td>Gulf Coast jet M1 − M2</td></tr>
+      <tr><td class="sym">HO_BRENT</td><td>NYMEX heating oil − ICE Brent crude, M1 (distillate crack)</td></tr>
+      <tr><td class="sym">GASOIL_M1M2</td><td>ICE gasoil M1 − M2</td></tr>
+      <tr><td class="sym">X_M1M2, X_M2M3</td><td>time spread of product X between two delivery months</td></tr>
+      <tr><td class="sym">X_DIFF_1</td><td>regional jet price X − heating oil (jet diff), M1</td></tr>
+      <tr><td class="sym">X_BRENT, X_WTI</td><td>crack: product X − crude oil, c/gal</td></tr>
+      <tr><td class="sym">BRENT_WTI, HO_GASOIL, NWE_JET_GASOIL</td><td>Brent − WTI; heating oil − ICE gasoil; NWE jet − ICE gasoil</td></tr>
+      <tr><td class="sym">West Coast three</td><td>book of LA_GC_1, LA_JET_M1M2 and LA_JET_M2M3, one unit each</td></tr>
+      <tr><td class="sym">Notebook 01 shortlist</td><td>book of LA_GC_1, LA_JET_M2M3, SING_GC_1 and HO_BRENT, chosen from price statistics (section 5)</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Markets, units, sources</h3>
+  <div class="scroll"><table class="terms">
+    <thead><tr><th>Symbol</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="sym">LA, GC, NY</td><td>Los Angeles, US Gulf Coast, New York Harbor</td></tr>
+      <tr><td class="sym">NWE, SING</td><td>Northwest Europe, Singapore</td></tr>
+      <tr><td class="sym">HO</td><td>NYMEX heating oil futures (New York Harbor ultra-low-sulfur diesel)</td></tr>
+      <tr><td class="sym">WTI, Brent</td><td>US and North Sea crude oil benchmarks</td></tr>
+      <tr><td class="sym">Kero, gasoil</td><td>kerosene (Asian jet grade); ICE low-sulfur gasoil futures (European diesel)</td></tr>
+      <tr><td class="sym">M1, M2, M3</td><td>nearest, second and third delivery month</td></tr>
+      <tr><td class="sym">c/gal</td><td>US cents per gallon; every price and spread on this page</td></tr>
+      <tr><td class="sym">bbl, kbbl, kb/d</td><td>barrel (42 gallons); thousand barrels; thousand barrels per day</td></tr>
+      <tr><td class="sym">0.42</td><td>dollars per barrel for 1 c/gal (42 gallons × $0.01)</td></tr>
+      <tr><td class="sym">PADD 1, 3, 5</td><td>EIA fuel regions: East Coast, Gulf Coast, West Coast</td></tr>
+      <tr><td class="sym">EIA</td><td>US Energy Information Administration; weekly stocks, refinery runs, output, imports, exports</td></tr>
+      <tr><td class="sym">OpenSky</td><td>open flight-tracking network; source of miles flown</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Model and trading</h3>
+  <div class="scroll"><table class="terms">
+    <thead><tr><th>Symbol</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="sym">t</td><td>week ending Friday t; data public by the weekend after t</td></tr>
+      <tr><td class="sym">s(t)</td><td>spread value in week t (mean of five daily settlements)</td></tr>
+      <tr><td class="sym">x(t)</td><td>driver value public by the weekend after week t</td></tr>
+      <tr><td class="sym">h</td><td>forecast horizon in weeks (1, 2 or 4)</td></tr>
+      <tr><td class="sym">Driver</td><td>EIA number used to explain a spread, e.g. PADD 5 days of supply</td></tr>
+      <tr><td class="sym">5-year normal</td><td>mean of the same calendar week over the previous 5 years (minimum 3)</td></tr>
+      <tr><td class="sym">Days of supply</td><td>stocks / 4-week mean demand</td></tr>
+      <tr><td class="sym">Runs, utilization</td><td>crude processed by refineries, kb/d; runs as a share of capacity, %</td></tr>
+      <tr><td class="sym">Stock surprise</td><td>weekly stock change − 5-year mean change for that week</td></tr>
+      <tr><td class="sym">Fair value</td><td>spread level predicted by an OLS fit on its drivers, using weeks up to t</td></tr>
+      <tr><td class="sym">Gap</td><td>spread − fair value</td></tr>
+      <tr><td class="sym">Own 26-week mean gap</td><td>spread − its mean over the previous 26 weeks</td></tr>
+      <tr><td class="sym">Forecast model: Fair value gap</td><td>forecast of the next 4-week move from the gap to fair value</td></tr>
+      <tr><td class="sym">Forecast model: Own 26-week mean gap</td><td>forecast from the gap to the spread's own 26-week mean</td></tr>
+      <tr><td class="sym">Forecast model: Both</td><td>forecast from both gaps in one regression</td></tr>
+      <tr><td class="sym">Flat forecast</td><td>forecast of zero change; the benchmark for R²</td></tr>
+      <tr><td class="sym">Walk-forward</td><td>each week the model is re-fitted on past weeks only, then forecasts the next weeks</td></tr>
+      <tr><td class="sym">Position</td><td>+1 = buy the spread (buy first leg, sell second); −1 = sell the spread</td></tr>
+      <tr><td class="sym">Unit</td><td>one spread position; the dollar figure scales it by barrels per spread</td></tr>
+      <tr><td class="sym">Cost per unit traded</td><td>c/gal charged per unit of position change; a switch from +1 to −1 is 2 units</td></tr>
+      <tr><td class="sym">Break-even cost</td><td>cost per unit traded at which profit a year falls to zero</td></tr>
+      <tr><td class="sym">COVID weeks</td><td>2020-02-21 to 2020-05-22, scored after every model choice was fixed</td></tr>
+      <tr><td class="sym">Nowcast</td><td>estimate of this week's EIA demand, available before the EIA publishes it</td></tr>
+      <tr><td class="sym">Miles</td><td>mean daily miles flown from tracked airports, per week</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Statistics and tests</h3>
+  <div class="scroll"><table class="terms">
+    <thead><tr><th>Symbol</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="sym">Per year</td><td>mean weekly profit × 52, c/gal</td></tr>
+      <tr><td class="sym">Sharpe</td><td>mean weekly profit / standard deviation of weekly profit × √52</td></tr>
+      <tr><td class="sym">Max drawdown</td><td>largest fall of cumulative profit from an earlier peak, c/gal</td></tr>
+      <tr><td class="sym">Weeks won</td><td>share of weeks with profit above zero</td></tr>
+      <tr><td class="sym">R² (out of sample)</td><td>1 − Σ(actual − forecast)² / Σ actual²; above zero = smaller error than the flat forecast</td></tr>
+      <tr><td class="sym">Direction</td><td>share of forecasts with the same sign as the actual move</td></tr>
+      <tr><td class="sym">sd</td><td>standard deviation</td></tr>
+      <tr><td class="sym">OLS</td><td>ordinary least squares regression</td></tr>
+      <tr><td class="sym">b</td><td>regression coefficient on the driver; b train and b test from the two periods</td></tr>
+      <tr><td class="sym">p, p-value</td><td>probability of a result at least this large when the true effect is zero</td></tr>
+      <tr><td class="sym">ADF test</td><td>augmented Dickey-Fuller; starting assumption: random walk; p &lt; 0.05 = series returns to a level</td></tr>
+      <tr><td class="sym">KPSS test</td><td>starting assumption: fixed mean; p &lt; 0.05 = the mean shifts over time</td></tr>
+      <tr><td class="sym">Fixed level, shifting level, wanders</td><td>ADF and KPSS verdicts: reverts to one mean; reverts to a moving mean; random walk</td></tr>
+      <tr><td class="sym">φ (phi)</td><td>lag-1 coefficient: share of last week's level that carries into this week</td></tr>
+      <tr><td class="sym">Half-life</td><td>weeks for half of a gap to close: log(0.5) / log(φ)</td></tr>
+      <tr><td class="sym">ACF, PACF</td><td>correlation of a series with its own past values; the same after removing shorter lags</td></tr>
+      <tr><td class="sym">PCA</td><td>principal components: splits weekly moves of M1 to M6 into level, slope and curvature</td></tr>
+      <tr><td class="sym">VIF</td><td>variance inflation factor: 1 / (1 − R² of a series on the other series); above 10 = collinear</td></tr>
+      <tr><td class="sym">Cluster</td><td>group of series whose weekly changes move together</td></tr>
+      <tr><td class="sym">Identity</td><td>series equal to an exact sum of other series, e.g. M1-M3 = M1-M2 + M2-M3</td></tr>
+      <tr><td class="sym">Granger test</td><td>tests whether past moves of one market improve the forecast of another</td></tr>
+      <tr><td class="sym">Bonferroni threshold</td><td>0.05 / number of tests</td></tr>
+      <tr><td class="sym">FDR, Benjamini-Hochberg, q</td><td>false discovery rate control; q 0.10 keeps results with at most 10% expected false</td></tr>
+      <tr><td class="sym">Newey-West</td><td>standard errors corrected for week-to-week correlation and overlapping horizons</td></tr>
+      <tr><td class="sym">Train, test</td><td>fit period 2015-01 to 2018-12; evaluation period 2019-01 to 2020-02</td></tr>
+      <tr><td class="sym">Error (air traffic)</td><td>mean absolute error, kb/d; "Against best" = change against the better benchmark</td></tr>
+    </tbody>
+  </table></div>
 </section>
 
 <section id="book">
-  <h2>2. Book builder</h2>
+  <h2>3. Book builder</h2>
   <p>Select spreads, forecast model, cost and period. Profit per week = position × (s<sub>t+2</sub> − s<sub>t+1</sub>) − cost × |position change|.</p>
+  <p class="sub">Spread codes: <a href="#terms">section 2</a>. Hover a code for its legs.</p>
   <div class="chks" role="group" aria-label="Spreads in the book">
-<label class="chk"><input type="checkbox" id="bk_LA_GC_1" value="LA_GC_1" checked>LA_GC_1</label>
-<label class="chk"><input type="checkbox" id="bk_LA_JET_M1M2" value="LA_JET_M1M2" checked>LA_JET_M1M2</label>
-<label class="chk"><input type="checkbox" id="bk_LA_JET_M2M3" value="LA_JET_M2M3" checked>LA_JET_M2M3</label>
-<label class="chk"><input type="checkbox" id="bk_SING_GC_1" value="SING_GC_1">SING_GC_1</label>
-<label class="chk"><input type="checkbox" id="bk_NWE_GC_1" value="NWE_GC_1">NWE_GC_1</label>
-<label class="chk"><input type="checkbox" id="bk_NY_GC_1" value="NY_GC_1">NY_GC_1</label>
-<label class="chk"><input type="checkbox" id="bk_GC_JET_M1M2" value="GC_JET_M1M2">GC_JET_M1M2</label>
-<label class="chk"><input type="checkbox" id="bk_HO_BRENT" value="HO_BRENT">HO_BRENT</label>
+<label class="chk" title="Los Angeles jet − Gulf Coast jet, M1"><input type="checkbox" id="bk_LA_GC_1" value="LA_GC_1" checked>LA_GC_1</label>
+<label class="chk" title="Los Angeles jet M1 − M2"><input type="checkbox" id="bk_LA_JET_M1M2" value="LA_JET_M1M2" checked>LA_JET_M1M2</label>
+<label class="chk" title="Los Angeles jet M2 − M3"><input type="checkbox" id="bk_LA_JET_M2M3" value="LA_JET_M2M3" checked>LA_JET_M2M3</label>
+<label class="chk" title="Singapore kerosene − Gulf Coast jet, M1"><input type="checkbox" id="bk_SING_GC_1" value="SING_GC_1">SING_GC_1</label>
+<label class="chk" title="Northwest Europe jet − Gulf Coast jet, M1"><input type="checkbox" id="bk_NWE_GC_1" value="NWE_GC_1">NWE_GC_1</label>
+<label class="chk" title="New York Harbor jet − Gulf Coast jet, M1"><input type="checkbox" id="bk_NY_GC_1" value="NY_GC_1">NY_GC_1</label>
+<label class="chk" title="Gulf Coast jet M1 − M2"><input type="checkbox" id="bk_GC_JET_M1M2" value="GC_JET_M1M2">GC_JET_M1M2</label>
+<label class="chk" title="NYMEX heating oil − ICE Brent, M1"><input type="checkbox" id="bk_HO_BRENT" value="HO_BRENT">HO_BRENT</label>
   </div>
   <div class="presets">
     <button type="button" class="ghost" data-preset="LA_GC_1,LA_JET_M1M2,LA_JET_M2M3">West Coast three</button>
@@ -116,10 +227,10 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
     <button type="button" class="ghost" data-preset="LA_GC_1,LA_JET_M1M2,LA_JET_M2M3,SING_GC_1,NWE_GC_1,NY_GC_1,GC_JET_M1M2,HO_BRENT">All eight</button>
   </div>
   <div class="grid">
-    <label for="bkModel">Forecast model<select id="bkModel"><option value="f_fair_value">Fair value gap</option><option value="f_own">Own 26-week mean gap</option><option value="f_both">Both</option></select></label>
-    <label for="bkCost">Cost per unit traded (c/gal)<input id="bkCost" type="number" value="0.25" min="0" max="5" step="0.05"></label>
-    <label for="bkPeriod">Period<select id="bkPeriod"><option value="pre">2017-01 to 2020-02</option><option value="covid">COVID weeks</option><option value="all">Both</option></select></label>
-    <label for="bkBbl">Barrels per spread<input id="bkBbl" type="number" value="50000" min="0" step="1000"></label>
+    <label for="bkModel">Forecast model<select id="bkModel"><option value="f_fair_value">Fair value gap</option><option value="f_own">Own 26-week mean gap</option><option value="f_both">Both</option></select><span class="hint">Signal behind each position: gap to fair value, gap to own 26-week mean, or both.</span></label>
+    <label for="bkCost">Cost per unit traded (c/gal)<input id="bkCost" type="number" value="0.25" min="0" max="5" step="0.05"><span class="hint">Charged per unit of position change; +1 to −1 = 2 units.</span></label>
+    <label for="bkPeriod">Period<select id="bkPeriod"><option value="pre">2017-01 to 2020-02</option><option value="covid">COVID weeks</option><option value="all">Both</option></select><span class="hint">Test: 2017-01-06 to 2020-02-14. COVID: 2020-02-21 to 2020-05-22.</span></label>
+    <label for="bkBbl">Barrels per spread<input id="bkBbl" type="number" value="50000" min="0" step="1000"><span class="hint">Position size per spread for the dollar figure.</span></label>
   </div>
   <p id="bkError" class="error" aria-live="polite"></p>
   <div class="results">
@@ -137,18 +248,18 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
 </section>
 
 <section id="explorer">
-  <h2>3. Spread explorer</h2>
+  <h2>4. Spread explorer</h2>
   <p>Spread level against fair value, re-fitted each week on weeks up to t. Shaded: COVID weeks.</p>
   <div class="grid"><label for="exSpread">Spread<select id="exSpread">
-<option value="LA_GC_1">LA_GC_1</option>
-<option value="LA_JET_M1M2">LA_JET_M1M2</option>
-<option value="LA_JET_M2M3">LA_JET_M2M3</option>
-<option value="SING_GC_1">SING_GC_1</option>
-<option value="NWE_GC_1">NWE_GC_1</option>
-<option value="NY_GC_1">NY_GC_1</option>
-<option value="GC_JET_M1M2">GC_JET_M1M2</option>
-<option value="HO_BRENT">HO_BRENT</option>
-  </select></label></div>
+<option value="LA_GC_1" title="Los Angeles jet − Gulf Coast jet, M1">LA_GC_1</option>
+<option value="LA_JET_M1M2" title="Los Angeles jet M1 − M2">LA_JET_M1M2</option>
+<option value="LA_JET_M2M3" title="Los Angeles jet M2 − M3">LA_JET_M2M3</option>
+<option value="SING_GC_1" title="Singapore kerosene − Gulf Coast jet, M1">SING_GC_1</option>
+<option value="NWE_GC_1" title="Northwest Europe jet − Gulf Coast jet, M1">NWE_GC_1</option>
+<option value="NY_GC_1" title="New York Harbor jet − Gulf Coast jet, M1">NY_GC_1</option>
+<option value="GC_JET_M1M2" title="Gulf Coast jet M1 − M2">GC_JET_M1M2</option>
+<option value="HO_BRENT" title="NYMEX heating oil − ICE Brent, M1">HO_BRENT</option>
+  </select><span class="hint" id="exLegs"></span></label></div>
   <p class="sub">Drivers: <b id="exDrivers"></b></p>
   <div class="results">
     <div class="metric"><span>4-week R² · fair value</span><strong id="exR2fv"></strong><em>160 weeks, 2017-01 to 2020-02</em></div>
@@ -165,7 +276,7 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
 </section>
 
 <section id="selection">
-  <h2>4. Series selection</h2>
+  <h2>5. Series selection</h2>
   <p>Prices.csv: 21 products × 6 delivery months, 492 weeks, 2011-01-07 to 2020-06-05. Weekly value = mean of 5 daily settlements. Tests use weeks to 2020-02-28.</p>
 
   <h3>Data preparation</h3>
@@ -346,7 +457,7 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
 </section>
 
 <section id="drivers">
-  <h2>5. Drivers and walk-forward</h2>
+  <h2>6. Drivers and walk-forward</h2>
   <p>Driver = EIA weekly value against its same-week mean over years Y−5 to Y−1, shifted one week to its publication date. Sign fixed before fitting.</p>
   <div class="scroll"><table>
     <thead><tr><th>Spread</th><th>Driver</th><th class="n">Expected sign</th><th class="n">Level corr</th></tr></thead>
@@ -386,7 +497,7 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
 </section>
 
 <section id="search">
-  <h2>6. Open search</h2>
+  <h2>7. Open search</h2>
   <p>30 spreads × 36 drivers × 3 horizons = 3,240 regressions. Train 2015-01 to 2018-12; test 2019-01 to 2020-02.</p>
   <div class="formula">s(t+1+h) − s(t+1) = a + b·x(t) + c·(s(t) − 26-week mean) · Newey-West errors<br>confirmed = Benjamini-Hochberg FDR q 0.10 on train p · same sign of b in test · test error below pull-back-only model</div>
   <div class="results">
@@ -412,15 +523,15 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
   <div class="scroll"><table>
     <thead><tr><th>Confirmed spread</th><th>Driver</th><th class="n">h</th><th class="n">Train p</th><th class="n">b train</th><th class="n">b test</th></tr></thead>
     <tbody>
-<tr><td>GC_JET_M1M2</td><td>P5_OUTPUT_VS_52W</td><td class="n">4</td><td class="n">0.0004</td><td class="n">0.36</td><td class="n">0.49</td></tr>
-<tr><td>GC_JET_M1M2</td><td>P5_OUTPUT_VS_52W_CHG4</td><td class="n">4</td><td class="n">0.0001</td><td class="n">0.32</td><td class="n">0.67</td></tr>
-<tr><td>GASOIL_M1M2</td><td>P5_OUTPUT_VS_52W</td><td class="n">4</td><td class="n">0.0003</td><td class="n">0.26</td><td class="n">0.27</td></tr>
+<tr><td>GC_JET_M1M2</td><td>PADD 5 jet output against prior 52-week mean <span class="sub">(P5_OUTPUT_VS_52W)</span></td><td class="n">4</td><td class="n">0.0004</td><td class="n">0.36</td><td class="n">0.49</td></tr>
+<tr><td>GC_JET_M1M2</td><td>PADD 5 jet output against prior 52-week mean, 4-week change <span class="sub">(P5_OUTPUT_VS_52W_CHG4)</span></td><td class="n">4</td><td class="n">0.0001</td><td class="n">0.32</td><td class="n">0.67</td></tr>
+<tr><td>GASOIL_M1M2</td><td>PADD 5 jet output against prior 52-week mean <span class="sub">(P5_OUTPUT_VS_52W)</span></td><td class="n">4</td><td class="n">0.0003</td><td class="n">0.26</td><td class="n">0.27</td></tr>
     </tbody>
   </table></div>
 </section>
 
 <section id="air">
-  <h2>7. Air traffic</h2>
+  <h2>8. Air traffic</h2>
   <p>OpenSky mean daily miles, PADD 1 and PADD 5, 2019-01 to 2020-06: 75 weeks, 61 pre-COVID. Miles rose 45.3% (PADD 5) from 2019-01 to 2020-01; demand rose 4.1%.</p>
   <div class="formula">nowcast(t) = miles(t) × Σ demand(t−8..t−1) / Σ miles(t−8..t−1)<br>benchmarks: demand(t−1); mean demand(t−4..t−1) · error = mean absolute error, kb/d</div>
   <div class="scroll"><table>
@@ -453,7 +564,7 @@ footer{max-width:1120px;margin:30px auto;padding:0 24px 40px;font-size:13px;colo
 </section>
 
 <section id="checks">
-  <h2>8. Checks and limits</h2>
+  <h2>9. Checks and limits</h2>
   <p id="testStatus" class="status"></p>
   <div class="scroll"><table>
     <thead><tr><th>Limit</th><th>Effect</th></tr></thead>
@@ -488,6 +599,7 @@ const D = JSON.parse(document.getElementById('data').textContent);
 const $ = id => document.getElementById(id);
 const COLORS = {LA_GC_1:'#174cc1', LA_JET_M1M2:'#087e83', LA_JET_M2M3:'#d4a333', SING_GC_1:'#8b4513', NWE_GC_1:'#7a5ca8', NY_GC_1:'#2f8f4e', GC_JET_M1M2:'#c0508a', HO_BRENT:'#6b7f8a'};
 const DRIVERS = {LA_GC_1:'PADD 5 days of supply, PADD 5 runs, PADD 3 jet stocks', LA_JET_M1M2:'PADD 5 days of supply, PADD 5 runs', LA_JET_M2M3:'PADD 5 days of supply, PADD 5 runs', SING_GC_1:'PADD 3 jet stocks, PADD 3 runs', NWE_GC_1:'PADD 3 jet stocks, PADD 3 runs', NY_GC_1:'PADD 1 jet stocks, PADD 3 jet stocks', GC_JET_M1M2:'PADD 3 jet stocks, PADD 3 runs', HO_BRENT:'US distillate stocks, US utilization'};
+const LEGS = {LA_GC_1:'Los Angeles jet − Gulf Coast jet, M1', LA_JET_M1M2:'Los Angeles jet M1 − M2', LA_JET_M2M3:'Los Angeles jet M2 − M3', SING_GC_1:'Singapore kerosene − Gulf Coast jet, M1', NWE_GC_1:'Northwest Europe jet − Gulf Coast jet, M1', NY_GC_1:'New York Harbor jet − Gulf Coast jet, M1', GC_JET_M1M2:'Gulf Coast jet M1 − M2', HO_BRENT:'NYMEX heating oil − ICE Brent, M1'};
 const PRE_LAST = '2020-02-14', COVID_FIRST = '2020-02-21';
 const f = (x, d = 1) => Number.isFinite(x) ? x.toLocaleString('en-US', {minimumFractionDigits: d, maximumFractionDigits: d}) : '–';
 
@@ -576,7 +688,7 @@ function renderBook() {
 
 function renderExplorer() {
   const sp = $('exSpread').value, s = D.series[sp], sc = D.scores[sp][4];
-  $('exDrivers').textContent = DRIVERS[sp];
+  $('exDrivers').textContent = DRIVERS[sp]; $('exLegs').textContent = LEGS[sp];
   $('exR2fv').textContent = f(sc.r2_fair_value * 100) + '%'; $('exR2own').textContent = f(sc.r2_own * 100) + '%'; $('exHit').textContent = f(sc.hit_fair_value * 100, 0) + '%';
   lineChart($('exChart'), s.week, [{y: s.level, color: '#173344', width: 1.6}, {y: s.fv, color: '#087e83', width: 2.4}], {shadeFrom: COVID_FIRST, label: sp + ' against fair value, c/gal'});
   const names = {f_fair_value: 'Fair value gap', f_own: 'Own mean gap', f_both: 'Both'};
