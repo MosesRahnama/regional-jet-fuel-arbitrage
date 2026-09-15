@@ -42,6 +42,21 @@ for _, row in FVS.iterrows():
 
 
 # ---------- static pieces ----------
+LEGS = {'LA_GC_1': 'Los Angeles jet − Gulf Coast jet, front month', 'LA_JET_M1M2': 'Los Angeles jet, front month − second month', 'LA_JET_M2M3': 'Los Angeles jet, second month − third month', 'SING_GC_1': 'Singapore kerosene − Gulf Coast jet, front month', 'NWE_GC_1': 'Northwest Europe jet − Gulf Coast jet, front month', 'NY_GC_1': 'New York Harbor jet − Gulf Coast jet, front month', 'GC_JET_M1M2': 'Gulf Coast jet, front month − second month', 'HO_BRENT': 'NYMEX heating oil − Brent crude, front month'}
+REGION = {'P1': 'PADD 1', 'P3': 'PADD 3', 'P5': 'PADD 5', 'US': 'US'}
+BODY = {'JET_STOCKS_VS_5Y': 'jet stocks against 5-year normal', 'DIST_STOCKS_VS_5Y': 'distillate stocks against 5-year normal',
+        'OUTPUT_VS_52W': 'jet output against prior 52-week mean', 'RUNS_VS_5Y': 'refinery runs against 5-year normal',
+        'UTIL_VS_5Y': 'refinery utilization against 5-year normal', 'DAYS_SUPPLY': 'days of supply', 'DEMAND': 'jet demand',
+        'IMPORTS_4W': '4-week jet imports', 'EXPORTS_4W': '4-week jet exports', 'STOCK_SURPRISE': 'stock surprise'}
+
+
+def plain(code):
+    chg = code.endswith('_CHG4')
+    core = code[:-5] if chg else code
+    text = f"{REGION[core[:2]]} {BODY[core[3:]]}" + (', 4-week change' if chg else '')
+    return f'{text} <span class="sub">({code})</span>'
+
+
 def trs(rows, num=()):
     return '\n'.join('<tr>' + ''.join(f'<td class="n">{c}</td>' if i in num else f'<td>{c}</td>' for i, c in enumerate(row)) + '</tr>' for row in rows)
 
@@ -137,7 +152,7 @@ f4 = FVS[FVS['h'] == 4].set_index('spread')
 DRV = trs([(sp, DRIVERS[sp], f"{f4.loc[sp, 'r2_own'] * 100:.1f}", f"{f4.loc[sp, 'r2_fair_value'] * 100:.1f}", f"{f4.loc[sp, 'hit_fair_value'] * 100:.0f}") for sp in SPREADS], num={2, 3, 4})
 
 conf = SS[SS['confirmed']]
-CONF = trs([(r['spread'], r['physical_number'], int(r['h']), f"{r['p_train']:.4f}", f"{r['b_train']:.2f}", f"{r['b_test']:.2f}") for _, r in conf.iterrows()], num={2, 3, 4, 5})
+CONF = trs([(r['spread'], plain(r['physical_number']), int(r['h']), f"{r['p_train']:.4f}", f"{r['b_train']:.2f}", f"{r['b_test']:.2f}") for _, r in conf.iterrows()], num={2, 3, 4, 5})
 bins = SS.groupby('training_strength', sort=False)['holds_in_test'].agg(['size', 'mean'])
 HOLD = trs([(k, int(v['size']), f"{v['mean'] * 100:.0f}%") for k, v in bins.iterrows()], num={1, 2})
 
@@ -145,8 +160,8 @@ TARGET = {'P5_JET_DEMAND': 'PADD 5 weekly demand', 'P5_JET_DEMAND_4W': 'PADD 5 4
 NOWT = trs([(TARGET[r['target']], r['period'], int(r['weeks']), f"{r['error_miles']:.1f}", f"{r['error_last_week']:.1f}", f"{r['error_4wk_average']:.1f}", f"{r['pct_better_than_best_simple']:+.0f}%")
             for _, r in NOW.iterrows()], num={2, 3, 4, 5, 6})
 
-SPREAD_OPTS = '\n'.join(f'<option value="{sp}">{sp}</option>' for sp in SPREADS)
-CHECKS = '\n'.join(f'<label class="chk"><input type="checkbox" id="bk_{sp}" value="{sp}"{" checked" if sp in ("LA_GC_1", "LA_JET_M1M2", "LA_JET_M2M3") else ""}>{sp}</label>' for sp in SPREADS)
+SPREAD_OPTS = '\n'.join(f'<option value="{sp}" title="{LEGS[sp]}">{sp}</option>' for sp in SPREADS)
+CHECKS = '\n'.join(f'<label class="chk" for="bk_{sp}"><input type="checkbox" id="bk_{sp}" value="{sp}"{" checked" if sp in ("LA_GC_1", "LA_JET_M1M2", "LA_JET_M2M3") else ""}><span class="chk-code">{sp}</span><span class="chk-legs">{LEGS[sp]}</span></label>' for sp in SPREADS)
 
 HTML = (OUT / 'template.html').read_text(encoding='utf-8')
 for key, val in {
