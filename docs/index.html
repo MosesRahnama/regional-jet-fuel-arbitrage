@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Regional Jet-Fuel Spreads Arbitrage During COVID Shutdowns</title>
+<link rel="icon" href="data:,">
+<style>
+:root { --ink:#173344; --muted:#576e7b; --accent:#087e83; --bg:#f1f5f6; --line:#d3e0e4; --soft:#edf5f5; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink); }
+header { background:var(--ink); color:#fff; padding:40px max(22px, calc((100vw - 880px) / 2)) 32px; }
+.kicker { letter-spacing:.12em; font-size:12px; font-weight:700; color:#9ad4d5; margin:0; }
+h1 { font-size:clamp(26px,3.4vw,36px); line-height:1.15; margin:10px 0 0; }
+main { max-width:880px; margin:auto; padding:22px; }
+nav { display:flex; gap:8px; flex-wrap:wrap; margin:22px 0 4px; }
+nav a { color:var(--accent); background:#fff; text-decoration:none; border:1px solid var(--line); padding:8px 14px; border-radius:20px; font-weight:600; font-size:14px; }
+nav a:hover { border-color:var(--accent); }
+a:focus-visible { outline:3px solid #bfe6e8; outline-offset:2px; }
+section { background:#fff; border:1px solid var(--line); border-radius:12px; padding:24px 28px; margin:18px 0; }
+h2 { font-size:22px; line-height:1.25; margin:0 0 10px; }
+p { margin:10px 0; }
+ul { margin:8px 0 0; padding-left:1.15em; }
+li { margin:8px 0; }
+.lab { font-weight:700; }
+.cap { color:var(--muted); font-size:14px; margin:6px 0 0; }
+svg { display:block; width:100%; height:auto; margin:16px 0 0; }
+.tk { font:11px system-ui,sans-serif; fill:var(--muted); }
+.ax { font:12px system-ui,sans-serif; fill:var(--muted); }
+.pl { font:11px system-ui,sans-serif; fill:var(--ink); }
+footer { max-width:880px; margin:auto; padding:8px 22px 48px; color:var(--muted); font-size:14px; }
+footer a { color:var(--accent); }
+@media (max-width:600px) { section { padding:18px 16px; } body { font-size:16px; } }
+</style>
+</head>
+<body>
+<header>
+<p class="kicker">OVERVIEW &middot; 2011 TO 2020</p>
+<h1>Regional Jet-Fuel Spreads Arbitrage During COVID Shutdowns</h1>
+</header>
+<main>
+<nav>
+<a href="index.html">Overview</a>
+<a href="detail.html">Methods</a>
+</nav>
+<section>
+<p>Jet fuel sells at different prices in different regions. A <b>spread</b> is one regional jet
+price minus another, quoted in cents per gallon. An <b>outright price</b>, also called the
+front-month price, is the price of the nearest delivery month on its own.</p>
+<p>The thesis rests on one measured difference. On weekly means from
+2011 to 2020, regional jet spreads return toward their own average within weeks. Outright prices
+follow crude oil, and a shock to them persists. The rule trades spreads because spreads return
+to an average.</p>
+</section>
+<section>
+<h2>Screened spreads</h2>
+<ul>
+<li><span class="lab">Method.</span> Four screens, applied to 30 candidate
+spreads on weeks through 20 February 2020: an Augmented Dickey-Fuller test with p below 0.05, a
+half-life of at most 8 weeks, a typical weekly move of at least 1 c/gal, and one name per group of
+spreads that move together.</li>
+<li><span class="lab">Reason.</span> Each screen tests one requirement the rule has.
+The Dickey-Fuller test asks whether a series returns to a fixed average or keeps drifting,
+and the rule needs the first kind. The half-life is the number of weeks in which half
+a move fades, so it sets the holding period. The 1 c/gal floor keeps the move larger than the noise
+a trader pays to cross. The group screen drops spreads that share a leg and so carry the same
+information twice.</li>
+<li><span class="lab">Result.</span> 30 candidates fell to 24 after the
+Dickey-Fuller screen, 16 after the half-life screen, 8 after the move-size screen,
+and 4 after the group screen: LA_GC_1, SING_GC_1, LA_JET_M2M3, HO_BRENT. NY_GC_1 failed the move-size screen at
+0.99 c/gal, just under the 1 c/gal floor. Outright front-month prices failed the first screen,
+with Dickey-Fuller p reaching 1.00: they hold no fixed average to trade against.</li>
+<li><span class="lab">What it means.</span> The four survivors are the only names the price
+statistics support, and the screens say why each other candidate left. The result also describes
+the data: regional and calendar spreads hold a stable average because freight and storage costs
+bound them, while outright prices inherit the path of crude oil. The screens ran on the
+same weeks the later simulation uses, so the shortlist is a retrospective choice.</li>
+</ul>
+<svg viewBox="0 0 880 196" role="img" aria-label="Spreads surviving each screen cut, from candidates down to the shortlist">
+<text x="16" y="31" class="pl">Candidate spreads built</text>
+<rect x="352" y="17" width="400.0" height="20" fill="#087e83" fill-opacity="0.85" rx="3"/>
+<text x="761.0" y="32" class="pl">30</text>
+<text x="16" y="67" class="pl">Return to an average (ADF p below 0.05)</text>
+<rect x="352" y="53" width="320.0" height="20" fill="#087e83" fill-opacity="0.55" rx="3"/>
+<text x="681.0" y="68" class="pl">24</text>
+<text x="706.0" y="68" class="tk">&minus;6</text>
+<text x="16" y="103" class="pl">Half-life at most 8 weeks</text>
+<rect x="352" y="89" width="213.3" height="20" fill="#087e83" fill-opacity="0.55" rx="3"/>
+<text x="574.3" y="104" class="pl">16</text>
+<text x="599.3" y="104" class="tk">&minus;8</text>
+<text x="16" y="139" class="pl">Weekly move at least 1 c/gal</text>
+<rect x="352" y="125" width="106.7" height="20" fill="#087e83" fill-opacity="0.55" rx="3"/>
+<text x="467.7" y="140" class="pl">8</text>
+<text x="492.7" y="140" class="tk">&minus;8</text>
+<text x="16" y="175" class="pl">One name per correlated group</text>
+<rect x="352" y="161" width="53.3" height="20" fill="#173344" fill-opacity="0.85" rx="3"/>
+<text x="414.3" y="176" class="pl">4</text>
+<text x="439.3" y="176" class="tk">&minus;4</text>
+</svg>
+<p class="cap">Spreads surviving each screen, with the number lost at each step on the right.</p>
+</section>
+<section>
+<h2>Physical driver tests</h2>
+<ul>
+<li><span class="lab">Method.</span> 3,240 regressions of spread changes on one physical
+driver at a time, then a Benjamini-Hochberg correction, then a test on 2019 to 2020 asking for the
+same sign and lower error. A walk-forward fair value was fitted separately, on a fixed set of regional balances.</li>
+<li><span class="lab">Reason.</span> A search this wide produces apparent findings from
+chance alone, so the survivor count means nothing until the chance count is subtracted.
+Benjamini-Hochberg ranks every result together and keeps only those too extreme for the expected
+chance passes to explain. The later window checks the survivors: a relationship that reverses sign
+outside the fitting period stays out of the rule.</li>
+<li><span class="lab">Result.</span> 264 of the 3,240 tests reached p below 0.05.
+A 5 percent threshold admits one test in twenty by chance, so about 162 would pass with no
+relationship present at all. Benjamini-Hochberg kept 15 at a cutoff of 0.000376237, and
+3 of those also held sign and cut error in the later window. Against that, the
+regional-balance fair value accounted for 17.9 percent of the four-week move in LA_GC_1 where
+the spread's own 26-week average accounted for 12.6 percent.</li>
+<li><span class="lab">What it means.</span> 3 survivors from 3,240 attempts sits close to
+the chance count, so the open search stays out of the rule.
+The fair value rests on separate ground: its inputs were fixed in advance on physical reasoning
+rather than chosen by the search. Its 5.3-point advantage says that 17.9 percent
+of the next four weeks is anticipated by today's inventory position, leaving 82.1 percent
+unexplained: enough to trade across many weeks, and too little to act on in any single week.</li>
+</ul>
+<svg viewBox="0 0 880 280" role="img" aria-label="How the 3240 search p-values are spread, against the flat line chance alone would produce">
+<line x1="60" y1="228.0" x2="860" y2="228.0" stroke="#e4ecef"/><text x="52" y="232.0" text-anchor="end" class="tk">0</text>
+<line x1="60" y1="175.5" x2="860" y2="175.5" stroke="#e4ecef"/><text x="52" y="179.5" text-anchor="end" class="tk">66</text>
+<line x1="60" y1="123.0" x2="860" y2="123.0" stroke="#e4ecef"/><text x="52" y="127.0" text-anchor="end" class="tk">132</text>
+<line x1="60" y1="70.5" x2="860" y2="70.5" stroke="#e4ecef"/><text x="52" y="74.5" text-anchor="end" class="tk">198</text>
+<line x1="60" y1="18.0" x2="860" y2="18.0" stroke="#e4ecef"/><text x="52" y="22.0" text-anchor="end" class="tk">264</text>
+<rect x="61.0" y="18.0" width="38.0" height="210.0" fill="#173344" fill-opacity="0.8"/>
+<rect x="101.0" y="73.7" width="38.0" height="154.3" fill="#087e83" fill-opacity="0.8"/>
+<rect x="141.0" y="90.4" width="38.0" height="137.6" fill="#087e83" fill-opacity="0.8"/>
+<rect x="181.0" y="96.8" width="38.0" height="131.2" fill="#087e83" fill-opacity="0.8"/>
+<rect x="221.0" y="89.6" width="38.0" height="138.4" fill="#087e83" fill-opacity="0.8"/>
+<rect x="261.0" y="88.8" width="38.0" height="139.2" fill="#087e83" fill-opacity="0.8"/>
+<rect x="301.0" y="105.5" width="38.0" height="122.5" fill="#087e83" fill-opacity="0.8"/>
+<rect x="341.0" y="104.7" width="38.0" height="123.3" fill="#087e83" fill-opacity="0.8"/>
+<rect x="381.0" y="94.4" width="38.0" height="133.6" fill="#087e83" fill-opacity="0.8"/>
+<rect x="421.0" y="119.8" width="38.0" height="108.2" fill="#087e83" fill-opacity="0.8"/>
+<rect x="461.0" y="111.1" width="38.0" height="116.9" fill="#087e83" fill-opacity="0.8"/>
+<rect x="501.0" y="111.9" width="38.0" height="116.1" fill="#087e83" fill-opacity="0.8"/>
+<rect x="541.0" y="94.4" width="38.0" height="133.6" fill="#087e83" fill-opacity="0.8"/>
+<rect x="581.0" y="125.4" width="38.0" height="102.6" fill="#087e83" fill-opacity="0.8"/>
+<rect x="621.0" y="103.1" width="38.0" height="124.9" fill="#087e83" fill-opacity="0.8"/>
+<rect x="661.0" y="123.8" width="38.0" height="104.2" fill="#087e83" fill-opacity="0.8"/>
+<rect x="701.0" y="99.9" width="38.0" height="128.1" fill="#087e83" fill-opacity="0.8"/>
+<rect x="741.0" y="99.9" width="38.0" height="128.1" fill="#087e83" fill-opacity="0.8"/>
+<rect x="781.0" y="117.4" width="38.0" height="110.6" fill="#087e83" fill-opacity="0.8"/>
+<rect x="821.0" y="114.3" width="38.0" height="113.7" fill="#087e83" fill-opacity="0.8"/>
+<line x1="60" y1="99.1" x2="860" y2="99.1" stroke="#8b4513" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="856" y="91.1" text-anchor="end" class="tk" style="paint-order:stroke;stroke:#fff;stroke-width:4">chance alone: 162 per bar</text>
+<text x="108.0" y="32.0" class="tk" style="paint-order:stroke;stroke:#fff;stroke-width:4">264 below 0.05; 162 expected by chance</text>
+<text x="60.0" y="244.0" text-anchor="middle" class="tk">0</text>
+<text x="260.0" y="244.0" text-anchor="middle" class="tk">0.25</text>
+<text x="460.0" y="244.0" text-anchor="middle" class="tk">0.5</text>
+<text x="660.0" y="244.0" text-anchor="middle" class="tk">0.75</text>
+<text x="860.0" y="244.0" text-anchor="middle" class="tk">1</text>
+<text x="460" y="268" text-anchor="middle" class="ax">Training p-value</text>
+<text x="14" y="123" text-anchor="middle" class="ax" transform="rotate(-90 14 123)">Tests</text>
+</svg>
+<p class="cap">Where the 3,240 training p-values fell. The dashed line is the count each bar
+would hold if no driver carried information.</p>
+</section>
+<section>
+<h2>Simulated results before trading costs</h2>
+<ul>
+<li><span class="lab">Method.</span> Held +1 or &minus;1 by the sign of the four-week fair-value
+forecast, scored against the following week's average-to-average spread change, held one week,
+and repeated for 163 weeks
+from January 2017 to February 2020, on revised EIA history. Gross spread changes, before execution
+costs. Two books: the three West Coast names, and the four screen
+survivors.</li>
+<li><span class="lab">Reason.</span> A one-week hold scores the forecast alone, with no
+position-sizing rule. The annualized Sharpe ratio divides the
+average weekly result by its standard deviation and scales by the square root of 52: return
+against the size of its own variation.</li>
+<li><span class="lab">Result.</span> West Coast three: 135.9 c/gal in total, 43.4 c/gal
+a year, Sharpe 2.29, 0.65 of weeks profitable, worst peak-to-trough fall -12.5 c/gal.
+Shortlist four: 105.3 total, 33.6 a year, Sharpe 1.30, 0.60 of weeks profitable,
+worst fall -33.5 c/gal. A Sharpe of 2.29 means the annual result is about 2.29 times
+the size of its own year-to-year variation.</li>
+<li><span class="lab">What it means.</span> The forecast carried a positive result on these weeks,
+and the narrower West Coast book beat the wider one: the return concentrated in the
+Los Angeles names. Both
+books were selected with these weeks already visible, and every figure above is gross: the
+bid-offer spread, fees and market depth for these swaps are absent from the dataset, so the cost
+per unit traded and the break-even cost that would erase the result are the first numbers to
+establish before any of this is tradable.</li>
+</ul>
+<svg viewBox="0 0 880 156" role="img" aria-label="West Coast and shortlist pre-COVID portfolio totals">
+<text x="16" y="34" class="pl">West Coast three</text>
+<rect x="186" y="18" width="420.0" height="22" fill="#087e83" rx="3"/>
+<text x="616.0" y="34" class="pl">135.9 c/gal total</text>
+<text x="186" y="60" class="tk">43.4 c/gal a year · Sharpe 2.29 · win 0.65 · DD -12.5</text>
+<text x="16" y="100" class="pl">Shortlist four</text>
+<rect x="186" y="84" width="325.4" height="22" fill="#087e83" rx="3"/>
+<text x="521.4" y="100" class="pl">105.3 c/gal total</text>
+<text x="186" y="126" class="tk">33.6 c/gal a year · Sharpe 1.30 · win 0.60 · DD -33.5</text>
+</svg>
+<p class="cap">Totals to February 2020, cents per gallon, before trading costs.</p>
+</section>
+<section>
+<h2>Flight miles as an early demand reading</h2>
+<ul>
+<li><span class="lab">Method.</span> Built weekly flight miles from OpenSky aircraft position
+records, estimated the same week's jet fuel demand from them four days before the Energy
+Information Administration published it, and scored that against last week's demand and the
+four-week average.</li>
+<li><span class="lab">Reason.</span> Saturday miles are observable before the Wednesday
+report. The two simple alternatives are the
+benchmark because a forecast has to beat what a person could write down unaided.</li>
+<li><span class="lab">Result.</span> Across 53 normal weeks the root mean squared error was
+3 percent lower for the West Coast and 4 percent lower for the United States than
+the better simple alternative. Four-week demand targets were worse. Miles tested against spreads gave 70 results below 0.05 from 720 tests, with
+11 surviving the Benjamini-Hochberg correction and no later window to confirm them.</li>
+<li><span class="lab">What it means.</span> A 3 to 4 percent error reduction is small because in a
+steady week the four-week average is already close to right. The 2020 collapse shows where the
+head start counts: during a fast demand move. Miles give an early reading of a demand shock.
+They leave routine weekly forecasting and the spread rule unchanged.</li>
+</ul>
+</section>
+<section>
+<h2>Conclusion</h2>
+<p>Spreads return to an average and outright prices follow crude oil, so the work trades spreads. A
+fair value built from inventory and refinery data anticipated more of the four-week move in the
+main West Coast spread than that spread's own history, and a signed one-week hold on it produced a
+positive simulated result. The open search stays out of the rule; flight
+miles give an early demand reading during a shock. Both books were chosen with these weeks visible, and no trading cost has been measured.</p>
+</section>
+</main>
+<footer>
+<a href="detail.html">Methods and sources</a>
+</footer>
+</body>
+</html>

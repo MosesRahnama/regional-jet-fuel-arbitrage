@@ -1,0 +1,56 @@
+series,group,first_week,weeks,adf_p,kpss_p,verdict,phi,half_life_weeks,pacf_lags_that_matter,typical_weekly_move,acf1_of_changes,r_squared_month,p_month,cluster,vif,rebuilt,rule_1_comes_back,rule_2_half_life,rule_3_moves_1c,rule_4_best_in_cluster,shortlist
+LA_JET,flat,2011-01-07,478,0.732,0.01,wanders,0.997,206.6,2,6.32,0.34,,,,,False,False,False,True,False,False
+GC_JET,flat,2011-01-07,478,0.766,0.01,wanders,0.997,260.6,2,6.03,0.31,,,,,False,False,False,True,False,False
+NY_JET,flat,2014-07-18,294,0.049,0.049,shifting level,0.978,30.5,2,5.73,0.34,,,,,False,True,False,True,False,False
+HO,flat,2011-01-07,478,0.749,0.01,wanders,0.996,192.2,2,6.37,0.28,,,,,False,False,False,True,False,False
+WTI,flat,2011-01-07,478,0.585,0.01,wanders,0.995,145.7,3,5.51,0.27,,,,,False,False,False,True,False,False
+BRENT,flat,2011-01-07,478,0.737,0.01,wanders,0.997,224.9,2,5.56,0.28,,,,,False,False,False,True,False,False
+GASOIL,flat,2011-01-07,478,0.737,0.01,wanders,0.997,236.4,2,6.05,0.32,,,,,False,False,False,True,False,False
+NWE_JET,flat,2011-01-07,478,0.784,0.01,wanders,0.998,302.8,2,5.73,0.32,,,,,False,False,False,True,False,False
+SING_KERO,flat,2011-01-07,478,0.78,0.01,wanders,0.998,302.5,2,5.68,0.32,,,,,False,False,False,True,False,False
+LA_GC_1,regional,2011-01-07,478,0.0,0.01,shifting level,0.888,5.8,1,1.83,0.03,0.1,0.226,11.0,13.46176125068467,False,True,True,True,True,True
+LA_GC_2,regional,2011-01-07,478,0.001,0.01,shifting level,0.9,6.6,2,1.49,-0.05,,,,,True,True,True,True,False,False
+NY_GC_1,regional,2014-07-18,294,0.0,0.1,fixed level,0.889,5.9,1,0.99,-0.05,0.13,0.349,15.0,10.178020636828103,False,True,True,False,False,False
+NY_GC_2,regional,2014-07-18,294,0.001,0.06,fixed level,0.905,6.9,1,0.96,0.07,,,,,True,True,True,False,False,False
+LA_NY_1,regional,2014-07-18,294,0.0,0.02,shifting level,0.855,4.4,1,1.82,0.01,,,,,True,True,True,True,False,False
+NWE_GC_1,foreign,2011-01-07,478,0.0,0.1,fixed level,0.824,3.6,2,1.47,-0.1,0.22,0.0,13.0,11.389866384968704,False,True,True,True,False,False
+SING_GC_1,foreign,2011-01-07,478,0.0,0.014,shifting level,0.87,5.0,1,1.57,-0.13,0.2,0.001,13.0,9.598836448436824,False,True,True,True,True,True
+NY_NWE_1,arb,2014-07-18,294,0.0,0.1,fixed level,0.82,3.5,1,1.53,-0.02,,,,,True,True,True,True,False,False
+LA_SING_1,arb,2011-01-07,478,0.0,0.01,shifting level,0.86,4.6,1,2.12,0.01,,,,,True,True,True,True,False,False
+LA_JET_M1M2,time,2011-01-07,478,0.0,0.1,fixed level,0.713,2.0,2,1.51,-0.03,0.06,0.315,11.0,4.567056196772419,False,True,True,True,False,False
+LA_JET_M2M3,time,2011-01-07,478,0.0,0.1,fixed level,0.711,2.0,2,1.17,-0.06,0.13,0.002,8.0,2.4566422470980824,False,True,True,True,True,True
+LA_JET_M1M3,time,2011-01-07,478,0.0,0.1,fixed level,0.807,3.2,2,1.69,0.05,,,,,True,True,True,True,False,False
+GC_JET_M1M2,time,2011-01-07,478,0.0,0.1,fixed level,0.856,4.4,1,0.85,-0.04,0.39,0.0,12.0,3.680117791944908,False,True,True,False,False,False
+GC_JET_M2M3,time,2011-01-07,478,0.0,0.1,fixed level,0.896,6.3,3,0.7,0.1,0.37,0.0,14.0,1.837428259985708,False,True,True,False,False,False
+GC_JET_M1M3,time,2011-01-07,478,0.0,0.1,fixed level,0.905,7.0,3,1.23,0.04,,,,,True,True,True,True,False,False
+NY_JET_M1M2,time,2014-07-18,294,0.019,0.01,shifting level,0.805,3.2,3,0.99,-0.11,0.07,0.536,12.0,3.0331139475787863,False,True,True,False,False,False
+NY_JET_M2M3,time,2014-07-18,294,0.041,0.01,shifting level,0.93,9.6,3,0.85,0.16,0.13,0.198,16.0,1.8214105077088123,False,True,False,False,False,False
+NY_JET_M1M3,time,2014-07-18,294,0.034,0.01,shifting level,0.939,11.0,1,1.15,-0.06,,,,,True,True,False,True,False,False
+HO_M1M2,time,2011-01-07,478,0.0,0.1,fixed level,0.711,2.0,2,1.67,-0.18,0.13,0.04,7.0,14.55200833391745,False,True,True,True,False,False
+HO_M2M3,time,2011-01-07,478,0.0,0.1,fixed level,0.877,5.3,4,0.62,0.09,0.19,0.0,7.0,4.751238031289099,False,True,True,False,False,False
+HO_M1M3,time,2011-01-07,478,0.001,0.1,fixed level,0.8,3.1,2,1.96,-0.15,,,,,True,True,True,True,False,False
+WTI_M1M2,time,2011-01-07,478,0.0,0.1,fixed level,0.949,13.2,2,0.47,0.04,0.14,0.458,2.0,2.103142683717141,False,True,False,False,False,False
+WTI_M2M3,time,2011-01-07,478,0.007,0.1,fixed level,0.956,15.4,2,0.43,0.16,0.11,0.669,2.0,2.9518374455231777,False,True,False,False,False,False
+WTI_M1M3,time,2011-01-07,478,0.003,0.1,fixed level,0.957,15.9,2,0.84,0.14,,,,,True,True,False,False,False,False
+BRENT_M1M2,time,2011-01-07,478,0.278,0.01,wanders,0.927,9.2,5,0.58,-0.11,0.02,0.991,1.0,2.037767951850717,False,False,False,False,False,False
+BRENT_M2M3,time,2011-01-07,478,0.074,0.013,wanders,0.976,28.2,4,0.28,0.17,0.02,0.948,1.0,2.220977730021392,False,False,False,False,False,False
+BRENT_M1M3,time,2011-01-07,478,0.309,0.01,wanders,0.958,16.1,4,0.8,0.01,,,,,True,False,False,False,False,False
+GASOIL_M1M2,time,2011-01-07,478,0.008,0.083,fixed level,0.873,5.1,2,0.68,-0.01,0.14,0.011,9.0,1.820171144674836,False,True,True,False,False,False
+GASOIL_M2M3,time,2011-01-07,478,0.0,0.056,fixed level,0.935,10.3,2,0.43,0.18,0.13,0.176,10.0,1.6515848289406274,False,True,False,False,False,False
+GASOIL_M1M3,time,2011-01-07,478,0.003,0.064,fixed level,0.924,8.8,3,0.93,0.12,,,,,True,True,False,False,False,False
+NWE_JET_M1M2,time,2011-01-07,478,0.0,0.047,shifting level,0.909,7.3,2,0.53,-0.03,0.04,0.574,4.0,3.552242386598804,False,True,True,False,False,False
+NWE_JET_M2M3,time,2011-01-07,478,0.001,0.095,fixed level,0.949,13.2,4,0.35,0.1,0.09,0.321,5.0,2.8678787891736643,False,True,False,False,False,False
+NWE_JET_M1M3,time,2011-01-07,478,0.002,0.068,fixed level,0.944,12.0,1,0.73,0.04,,,,,True,True,False,False,False,False
+SING_KERO_M1M2,time,2011-01-07,478,0.01,0.098,fixed level,0.881,5.5,3,0.47,-0.26,0.06,0.545,6.0,2.335089383122184,False,True,True,False,False,False
+SING_KERO_M2M3,time,2011-01-07,478,0.018,0.08,fixed level,0.957,15.7,1,0.26,0.01,0.07,0.69,5.0,2.29512931708119,False,True,False,False,False,False
+SING_KERO_M1M3,time,2011-01-07,478,0.011,0.086,fixed level,0.939,11.0,2,0.63,-0.13,,,,,True,True,False,False,False,False
+LA_DIFF_1,diff,2011-01-07,478,0.039,0.01,shifting level,0.95,13.6,2,1.97,0.14,0.05,0.834,11.0,8.637611928701887,False,True,False,True,False,False
+GC_DIFF_1,diff,2011-01-07,478,0.23,0.01,wanders,0.979,32.0,2,1.36,0.06,0.07,0.553,13.0,31.12268941283035,False,False,False,True,False,False
+NY_DIFF_1,diff,2014-07-18,294,0.016,0.046,shifting level,0.929,9.4,2,1.23,-0.05,0.09,0.743,13.0,15.894560971860573,False,True,False,True,False,False
+GC_JET_BRENT,crack,2011-01-07,478,0.153,0.01,wanders,0.96,16.8,5,2.35,0.04,0.08,0.597,13.0,21.56646942318485,False,False,False,True,False,False
+GC_JET_WTI,crack,2011-01-07,478,0.299,0.01,wanders,0.986,50.8,3,3.51,0.13,,,,,True,False,False,True,False,False
+HO_BRENT,crack,2011-01-07,478,0.008,0.1,fixed level,0.913,7.7,3,3.01,-0.03,0.18,0.003,7.0,35.65527993080414,False,True,True,True,True,True
+HO_WTI,crack,2011-01-07,478,0.096,0.01,wanders,0.97,22.6,2,4.01,0.07,,,,,True,False,False,True,False,False
+BRENT_WTI,other,2011-01-07,478,0.31,0.01,wanders,0.98,33.9,4,2.87,0.14,0.01,0.994,3.0,2.495332463584898,False,False,False,True,False,False
+HO_GASOIL,other,2011-01-07,478,0.017,0.01,shifting level,0.904,6.8,3,2.43,-0.14,0.06,0.635,7.0,6.139678316585038,False,True,True,True,False,False
+NWE_JET_GASOIL,other,2011-01-07,478,0.471,0.01,wanders,0.99,69.9,2,0.96,0.1,0.0,1.0,4.0,2.778922630721011,False,False,False,False,False,False
